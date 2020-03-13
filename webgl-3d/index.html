@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./cesium/Widgets/widgets.css">
+    <script src="./cesium/Cesium.js"></script>
+    <style>
+        html,body {
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+        }
+        #cesiumContainer{
+            width: 100vw;
+            height: 100vh;
+        }
+        .cesium-viewer-bottom, .cesium-viewer-zoomIndicatorContainer{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cesiumContainer"></div>
+
+    <script>
+        let viewer;
+        let niaoChaoMap = "http://www.supermapol.com/realspace/services/3D-niaocao_water/rest/realspace";
+        let superMapwgs = "http://www.supermapol.com/realspace/services/map-World/rest/maps/World_Google"
+        function onload() {
+            viewer = new Cesium.Viewer('cesiumContainer');
+            viewer.imageryLayers.addImageryProvider(new Cesium.SuperMapImageryProvider({
+                url: superMapwgs
+            }));
+            var scene = viewer.scene;
+            scene.globe.depthTestAgainstTerrain = false;
+            var camera = scene.camera;
+            var promise = scene.open(niaoChaoMap);
+            Cesium.when(promise, function (layers) {
+                camera.setView({
+                    destination: new Cesium.Cartesian3.fromDegrees(116.38621009526075, 39.98468016277832, 313.2286367219722),
+                    orientation: {
+                        heading: 6.116051,
+                        pitch: -0.275007,
+                        roll: 6.283185
+                    }
+                });
+            });
+        }
+        onload();
+    </script>
+</body>
+
+</html>
