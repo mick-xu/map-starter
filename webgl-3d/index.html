@@ -8,16 +8,20 @@
     <link rel="stylesheet" href="./cesium/Widgets/widgets.css">
     <script src="./cesium/Cesium.js"></script>
     <style>
-        html,body {
+        html,
+        body {
             margin: 0px;
             padding: 0px;
             overflow: hidden;
         }
-        #cesiumContainer{
+
+        #cesiumContainer {
             width: 100vw;
             height: 100vh;
         }
-        .cesium-viewer-bottom, .cesium-viewer-zoomIndicatorContainer{
+
+        .cesium-viewer-bottom,
+        .cesium-viewer-zoomIndicatorContainer {
             display: none;
         }
     </style>
@@ -49,6 +53,14 @@
                     }
                 });
             });
+            let gltf = viewer.entities.add({
+                name: 'cloud',
+                position: new Cesium.Cartesian3.fromDegrees(116.38621009526075, 39.98468016277832, 200),
+                model: {
+                    uri: "./model.gltf"
+                }
+            });
+            viewer.zoomTo(gltf)
         }
         onload();
     </script>
