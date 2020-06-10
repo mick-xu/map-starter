@@ -18,6 +18,6 @@ body {
 
 .cesium-viewer-bottom,
 .cesium-viewer-zoomIndicatorContainer {
-    display: none;
+    display: none !important;
 }
 </style>

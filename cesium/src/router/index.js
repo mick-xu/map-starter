@@ -14,6 +14,11 @@ Vue.use(VueRouter)
     path: '/supermap',
     name: 'SuperMap',
     component: () => import('../views/SuperMap.vue')
+  },
+  {
+    path: '/cesium',
+    name: 'Cesium',
+    component: () => import('../views/Cesium.vue')
   }
 ]
 
