@@ -15,3 +15,8 @@ body
 ```
 GET iportal/web/mycontent/account.rjson?token=xxx
 ```
+
+### 获取所有角色
+```
+GET iportal/manager/security/roles.rjson?token=xx..
+```
